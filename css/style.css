@@ -1,0 +1,387 @@
+:root {
+    --text-color: #7cff00;
+    --white: #fff;
+    --black: #000;
+    --text-color-rgba: rgb(124, 255, 0, .6);
+    --section-background-color-rgba: rgb(124, 255, 0, .4);
+    --header-background-color-rgba: rgba(0, 0, 0, .8);
+}
+
+head {
+    background-color: #7cff00; /* Cambia este valor al color que desees */
+}
+
+* {
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(../img/background.png);
+    background-repeat: no-repeat;
+    background-position: 100% 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+    margin-bottom: 4em;
+}
+
+/*** Header ***/
+
+header {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    background-color: var(--header-background-color-rgba);
+    display: flex;
+    z-index: 100;
+}
+
+header>div {
+    display: flex;
+    align-items: center;
+}
+
+header>div:first-child {
+    width: 70%;
+}
+
+header>div:last-child {
+    width: 25%;
+    float: right;
+}
+
+header>div>h1 {
+    color: var(--text-color);
+    padding: .4em;
+    margin-left: 5%;
+}
+
+header>div>input[type="search"] {
+    width: 100%;
+    max-width: 500px;
+    background-color: rgba(255, 255, 255, .4);
+    color: var(--text-color);
+    border: none;
+    height: 2em;
+    border-radius: 1em;
+    padding-left: 4em;
+    padding-right: 1em;
+    font-size: 1.2em;
+    outline: none;
+}
+
+header>div>input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    width: 2em;
+    height: 2em;
+    background-image: url("data:image/svg+xml;charset=utf8,<svg xmlns='http://www.w3.org/2000/svg' height='2em' width='2em' fill='%237cff00' viewBox='0 0 448 512'><path d='M351.9 160.1c-7.6-7.6-20-7.6-27.6 0L224 248.4 123.7 148.1c-7.6-7.6-20-7.6-27.6 0s-7.6 20 0 27.6L196.4 256 96.1 356.3c-7.6 7.6-7.6 20 0 27.6s20 7.6 27.6 0L224 263.6l100.3 100.3c7.6 7.6 20 7.6 27.6 0s7.6-20 0-27.6L251.6 256l100.3-100.3c7.6-7.6 7.6-20 0-27.6z'/></svg>");
+}
+
+header>div>input[type="search"]::-webkit-search-cancel-button:hover {
+    background-image: url("data:image/svg+xml;charset=utf8,<svg xmlns='http://www.w3.org/2000/svg' height='2em' width='2em' fill='rgb(124, 255, 0, 0.6)' viewBox='0 0 448 512'><path d='M351.9 160.1c-7.6-7.6-20-7.6-27.6 0L224 248.4 123.7 148.1c-7.6-7.6-20-7.6-27.6 0s-7.6 20 0 27.6L196.4 256 96.1 356.3c-7.6 7.6-7.6 20 0 27.6s-20 7.6-27.6 0L224 263.6l100.3 100.3c7.6 7.6-7.6 20 27.6 0s7.6-20 0-27.6L251.6 256l100.3-100.3c7.6-7.6 7.6-20 0-27.6z'/></svg>");
+    cursor: pointer;
+}
+
+header>div>input[type="search"]::placeholder {
+    color: var(--text-color-rgba);
+    font-size: .8em;
+}
+
+header>div>button {
+    position: absolute;
+    background-color: rgba(255, 255, 255, .4);
+    color: var(--text-color);
+    width: 3em;
+    height: 2em;
+    border: none;
+    font-size: 1.2em;
+    border-radius: 1em 0 0 1em;
+}
+
+
+/*** Section ***/
+
+section {
+    width: 95%;
+    height: auto;
+    margin: .5em auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1em;
+}
+
+.flip-card {
+    background-color: transparent;
+    height: 300px;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    background-color: #bbb;
+    color: var(--text-color);
+    background-repeat: no-repeat;
+    background-position: 100% 0;
+    background-size: cover;
+}
+
+.flip-card-back {
+    background-color: var(--text-color);
+    color: var(--black);
+    transform: rotateY(180deg);
+    text-align: start;
+    padding: .5em;
+}
+
+.flip-card-back>p {
+    margin: .5em 0;
+}
+
+.flip-card-back>p>span {
+    font-weight: 600;
+}
+
+.flip-card-front>h2 {
+    position: absolute;
+    background-color: var(--header-background-color-rgba);
+    color: var(--color);
+    padding: .4em;
+    bottom: 0;
+}
+
+/*** Buttons ***/
+div#buttons {
+    width: 95%;
+    margin: 0.5em auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--header-background-color-rgba);
+}
+
+div#buttons>p {
+    color: var(--white);
+    font-weight: 700;
+}
+
+
+div#buttons>button {
+    width: 20%;
+    padding: 1em;
+    border: none;
+    background-color: var(--text-color);
+    font-weight: 700;
+}
+
+div#buttons>button:hover{
+    background-color: var(--section-background-color-rgba);
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+/*** No result paraf ***/
+p#empty {
+    width: 20%;
+    background-color: #ffae00;
+    padding: 1em;
+    text-align: center;
+    border-radius: 0.5em;
+    margin: auto;
+    font-weight: 600;
+    color: var(--black);
+    overflow-wrap: anywhere;
+}
+
+/*** Footer ***/
+
+footer {
+    width: 100%;
+    padding: .1em 0;
+    position: fixed;
+    bottom: 0;
+    background-color: var(--header-background-color-rgba);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    z-index: 100;
+    justify-content: space-evenly;
+}
+
+footer>p {
+    margin: 0;
+    margin-left: 5%;
+}
+
+footer>div {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+footer>div>a {
+    background-color: transparent;
+    border: none;
+    fill: var(--text-color);
+    color: var(--text-color);
+    font-size: 2.5em;
+}
+
+footer>div>a:hover {
+    fill: var(--section-background-color-rgba);
+    color: var(--section-background-color-rgba);
+}
+
+/*** Top button ***/
+#goTopButton {
+    display: none;
+    position: fixed;
+    bottom: 6em;
+    right: 5px;
+    background-color: var(--text-color);
+    color: var(--black);
+    border: none;
+    border-radius: 0.1em;
+    padding: .6em;
+    cursor: pointer;
+}
+
+#goTopButton:hover {
+    background-color: var(--section-background-color-rgba);
+    color: var(--text-color);
+}
+
+/* Estilos para dispositivos pequeños (móviles) */
+@media (max-width: 767px) {
+    section {
+        grid-template-columns: repeat(2, 1fr);
+        gap: .5em;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        padding: .5em;
+        justify-content: center;
+    }
+    
+    header>div>h1 {
+        font-size: 1.4em;
+        padding: 0;
+        margin-left: 0;
+    }
+
+    header>div:first-child {
+        justify-content: center;
+    }
+    header>div:last-child {
+        width: 80%;
+    margin: auto;
+    }
+
+    .flip-card{
+        height: 200px;
+    }
+
+    h2{
+        font-size: 1.2em;
+    }
+    p{
+        font-size: 1em;
+    }
+    div#buttons > button {
+        width: 30%;
+        padding: 0.5em;
+        font-weight: 400;
+    }
+}
+
+/* Estilos para tabletas en orientación vertical */
+@media (min-width: 768px) and (max-width: 1023px) {
+    section {
+        grid-template-columns: repeat(3, 1fr);
+        gap: .5em;
+    }
+    
+    header {
+        padding: 1em;
+    }
+
+    header>div:first-child {
+        width: 50%;
+    }
+    header>div:last-child {
+        width: 50%;
+    }
+    p#empty {
+        width: 50%;
+    }
+}
+
+/* Estilos para tabletas en orientación horizontal */
+@media (min-width: 1024px) and (max-width: 1279px) {
+    section {
+        grid-template-columns: repeat(4, 1fr);
+        gap: .5em;
+    }
+
+    header {
+        padding: 1em;
+    }
+
+    header>div:first-child {
+        width: 50%;
+    }
+    header>div:last-child {
+        width: 50%;
+    }
+    p#empty {
+        width: 50%;
+    }
+}
+
+/* Estilos para pantallas de escritorio */
+@media (min-width: 1280px) {}
+
+/* Barra de desplazamiento vertical */
+::-webkit-scrollbar,
+::-webkit-scrollbar-horizontal {
+    width: .5em;
+    /* Ancho de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb:horizontal {
+    background-color: var(--text-color);
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track:horizontal {
+    background-color: var(--header-background-color-rgba);
+}
